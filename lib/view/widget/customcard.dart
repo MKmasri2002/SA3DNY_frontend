@@ -14,7 +14,7 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.blueAccent,
+      color: Theme.of(context).primaryColor,
       child: ListTile(leading: Icon(icon,color: Colors.white,), title: Text(title,style: TextStyle(color: Colors.white),), onTap: onTap),
     );
   }

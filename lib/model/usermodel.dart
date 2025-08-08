@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   String id;
   String fullName;
   String phoneNumber;
@@ -8,7 +8,7 @@ class User {
   String userName;
   String role;
 
-  User({
+  UserModel({
     required this.id,
     required this.fullName,
     required this.phoneNumber,
@@ -19,8 +19,8 @@ class User {
     required this.role,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
       id: json["_id"] ?? "",
       fullName: json["fullName"] ?? "",
       phoneNumber: json["phoneNumber"] ?? "",

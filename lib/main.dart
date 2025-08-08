@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:forntend/page/dashboard.dart';
-import 'package:forntend/page/home.dart';
-import 'package:forntend/page/login.dart';
-import 'package:forntend/page/signup.dart';
+import 'package:forntend/core/router/routers.dart';
+import 'package:forntend/provider/data_provider.dart';
+import 'package:forntend/viewmodel/login_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginViewModel()),
+        ChangeNotifierProvider(create: (_) => DataProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,16 +25,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: Color(0xFF1D4ED8),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        //primaryColor: Color.fromARGB(255, 6, 22, 63)),
+        primaryColor: Color.fromARGB(255, 117, 209, 12),
       ),
       initialRoute: "/",
-      routes: {
-        "/": (context) => Home(),
-        "/login": (context) => Login(),
-        "/dashboard": (context) => Dashboard(),
-        "/signup": (context) => SignUp(),
-      },
+      routes: routes,
     );
   }
 }

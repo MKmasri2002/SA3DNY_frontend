@@ -11,10 +11,15 @@ class Custombutton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: onPressd,
-        style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
         child: Text(
           title,
-          style: TextStyle(color: Color(0xFF1D4ED8), fontSize: 20),
+          style: TextStyle(
+            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 20,
+          ),
         ),
       ),
     );

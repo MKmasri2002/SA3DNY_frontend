@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forntend/controller/usercontroller.dart';
-import 'package:forntend/customwidget/drawer.dart';
+import 'package:forntend/view/widget/drawer.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key}); // ضروري تحط constructor
@@ -8,7 +7,7 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // تأكد إذا المستخدم موجود وخذ الاسم، وإلا رجّع "Guest"
-    final String name = UserController.user.fullName;
+    //final String name = UserController.user.fullName;
 
     return Scaffold(
       appBar: AppBar(
@@ -26,7 +25,7 @@ class Dashboard extends StatelessWidget {
       ),
       drawer: SafeArea(child: CustomDrawer()),
       body: Center(
-        child: Text('Welcome, $name!', style: const TextStyle(fontSize: 24)),
+        child: Text('Welcome, !', style: const TextStyle(fontSize: 24)),
       ),
     );
   }

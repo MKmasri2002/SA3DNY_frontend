@@ -15,8 +15,8 @@ class Customtextfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
+    return Padding(
+      padding: EdgeInsetsGeometry.symmetric(vertical: 8),
       child: TextField(
         controller: controller,
         decoration: InputDecoration(
@@ -24,11 +24,22 @@ class Customtextfield extends StatelessWidget {
           prefixIconColor: Theme.of(context).primaryColor,
           hintText: label,
           hintStyle: TextStyle(color: Colors.grey),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white, width: 4),
-          ),
-          fillColor: Colors.white,
+          fillColor: const Color.fromARGB(255, 199, 195, 195),
           filled: true,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: const Color.fromARGB(255, 255, 255, 255),
+              width: 2,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+              color: Theme.of(context).primaryColor,
+              width: 1.5,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+          ),
         ),
         obscureText: obscure,
       ),
