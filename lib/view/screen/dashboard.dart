@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:forntend/provider/data_provider.dart';
 import 'package:forntend/view/widget/drawer.dart';
+import 'package:provider/provider.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key}); // ضروري تحط constructor
@@ -7,8 +9,14 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // تأكد إذا المستخدم موجود وخذ الاسم، وإلا رجّع "Guest"
-    //final String name = UserController.user.fullName;
 
+    final dataP = Provider.of<DataProvider>(context);
+     String name = "guest";
+    if (dataP.dataModel != null) {
+          name = dataP.dataModel!.userModel != null
+          ? dataP.dataModel!.userModel.fullName
+          : "guest";
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard', style: TextStyle(color: Colors.white)),
@@ -25,7 +33,7 @@ class Dashboard extends StatelessWidget {
       ),
       drawer: SafeArea(child: CustomDrawer()),
       body: Center(
-        child: Text('Welcome, !', style: const TextStyle(fontSize: 24)),
+        child: Text('Welcome, $name!', style: const TextStyle(fontSize: 24)),
       ),
     );
   }

@@ -43,8 +43,11 @@ class CustomDrawer extends StatelessWidget {
             icon: Icons.logout,
             onTap: () {
               dataP.logOut();
-              //Navigator.pushReplacementNamed(context, RoutesString.welcome);
-              Navigator.pop(context);
+              
+              Navigator.popUntil(
+                context,
+                ModalRoute.withName(RoutesString.welcome),
+              );
             },
           ),
         ],

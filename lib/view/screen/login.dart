@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:forntend/core/router/routes_string.dart';
 import 'package:forntend/provider/data_provider.dart';
+import 'package:forntend/view/widget/customaler.dart';
 import 'package:forntend/viewmodel/login_viewmodel.dart';
 import 'package:forntend/view/widget/custombutton.dart';
 import 'package:forntend/view/widget/customtextfield.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {
-  
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final bool success = false;
@@ -82,15 +82,25 @@ class Login extends StatelessWidget {
                         password: passwordController.text,
                         dataProvider: dataP,
                       );
+
                       if (dataP.dataModel != null) {
-                        Navigator.pushReplacementNamed(context, RoutesString.dashboard);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RoutesString.dashboard,
+                        );
+                      } else {
+                        CustomAlertDialog.showCustomAlert(context);
+                        
                       }
                     },
                   ),
                   SizedBox(height: 10),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, RoutesString.signup);
+                      Navigator.pushReplacementNamed(
+                        context,
+                        RoutesString.signup,
+                      );
                     },
                     child: Text(
                       "don't have account",
