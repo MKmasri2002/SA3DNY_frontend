@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:forntend/model/datamodel.dart';
 import 'package:forntend/provider/data_provider.dart';
-import 'package:forntend/viewmodel/login_viewmodel.dart';
 import 'package:forntend/core/router/routes_string.dart';
 import 'package:forntend/view/widget/customcard.dart';
-import 'package:forntend/model/usermodel.dart';
+
 import 'package:provider/provider.dart';
 
 class CustomDrawer extends StatelessWidget {
