@@ -37,14 +37,24 @@ class Dashboard extends StatelessWidget {
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 12),
         child: Center(
-          child: Custombutton(
-            title: "Request a service",
-            onPressd: () {
-              Navigator.pushNamed(
-                context,
-                RoutesString.serviceInfo,
-              );
-            },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Welcom $name!",
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontSize: 25,
+                ),
+              ),
+              SizedBox(height: 300),
+              Custombutton(
+                title: "Request a service",
+                onPressd: () {
+                  Navigator.pushNamed(context, RoutesString.serviceInfo);
+                },
+              ),
+            ],
           ),
         ),
       ),
