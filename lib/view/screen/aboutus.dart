@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forntend/view/widget/customText.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});
@@ -26,76 +27,60 @@ class AboutUs extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Center(
-              child: Text(
-                "SA3DNY",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor,
-                ),
+              child: CustomText(
+                text: 'SA3DNY',
+                size: 28,
+                weight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 30),
-            Text(
-              "Welcome to SA3DNY!",
-              style: TextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
-              ),
+            CustomText(
+              text: 'Welcome to SA3DNY!',
+              size: 22,
+              weight: FontWeight.bold,
             ),
+
             const SizedBox(height: 10),
-            Text(
-              "SA3DNY is an innovative platform designed to help users find reliable handymen and home service providers quickly and safely. We connect people with trusted professionals in fields such as plumbing, carpentry, electrical work, and more.",
-              style: TextStyle(
-                fontSize: 16,
-                height: 1.5,
-                color: Theme.of(context).primaryColor,
-              ),
+            CustomText(
+              text:
+                  'SA3DNY is an innovative platform designed to help users find reliable handymen and home service providers quickly and safely. We connect people with trusted professionals in fields such as plumbing, carpentry, electrical work, and more.',
+              size: 16,
             ),
             const SizedBox(height: 20),
-            Text(
-              "Our Vision",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
+            CustomText(text: "Our Vision", size: 20, weight: FontWeight.bold),
+
             const SizedBox(height: 10),
-            Text(
-              "We aim to become the leading platform in the Middle East for connecting customers with skilled workers in a professional, secure, and user-friendly way.",
-              style: TextStyle(fontSize: 16, height: 1.5),
+            CustomText(
+              text:
+                  "We aim to become the leading platform in the Middle East for connecting customers with skilled workers in a professional, secure, and user-friendly way.",
+              size: 16,
             ),
+
             const SizedBox(height: 20),
-            Text(
-              "Our Team",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            CustomText(text: "Our Team", size: 20, weight: FontWeight.bold),
+
             const SizedBox(height: 10),
-            Text(
-              "Team Leader: Eng. Mahmoud Almasri\nTeam Member: Shaimaa Daqamseh",
-              style: TextStyle(fontSize: 16, height: 1.5),
+            CustomText(
+              text:
+                  "Team Leader: Eng. Mahmoud Almasri\nTeam Member: Shaimaa Daqamseh",
+              size: 16,
             ),
+
             const SizedBox(height: 20),
-            Text(
-              "Our Values",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+            CustomText(text: "Our Values", size: 20, weight: FontWeight.bold),
+
             const SizedBox(height: 10),
-            Text(
-              "• Quality\n• Trust\n• Respect\n• Timely Service",
-              style: TextStyle(fontSize: 16, height: 1.5),
+            CustomText(
+              text: "• Quality\n• Trust\n• Respect\n• Timely Service",
+              size: 16,
             ),
+
             const SizedBox(height: 30),
             Center(
-              child: Text(
-                "Thank you for choosing SA3DNY 💙",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontStyle: FontStyle.italic,
-                  color: Theme.of(context).primaryColor,
-                ),
+              child: CustomText(
+                text: "Thank you for choosing SA3DNY",
+                size: 18,
+                weight: FontWeight.bold,
               ),
             ),
           ],

@@ -1,9 +1,9 @@
 import 'package:forntend/model/usermodel.dart';
 
 class DataModel {
-  String msg;
-  String token;
-  UserModel userModel;
+  final String msg;
+  final String token;
+  final UserModel userModel;
 
   DataModel({required this.msg, required this.token, required this.userModel});
 

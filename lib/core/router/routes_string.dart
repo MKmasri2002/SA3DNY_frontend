@@ -5,4 +5,5 @@ class RoutesString {
   static const String dashboard = '/dashboard';
   static const String aboutus = '/aboutus';
   static const String language = '/language';
+  static const String serviceInfo = '/serviceInfo';
 }
