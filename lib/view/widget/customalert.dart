@@ -46,13 +46,13 @@ class CustomAlertDialog extends StatelessWidget {
     );
   }
 
-  static void showCustomAlert(BuildContext context) {
+  static void showCustomAlert(BuildContext context,String title,String content) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => CustomAlertDialog(
-        title: "Login Failed",
-        content: "Wrong email or password.\nPlease try again.",
+        title: title,
+        content: content,
         onOk: () {
           print("User pressed OK");
         },

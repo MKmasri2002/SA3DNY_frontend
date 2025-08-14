@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:forntend/core/router/routes_string.dart';
+import 'package:forntend/provider/user_provider.dart';
+import 'package:forntend/view/widget/customalert.dart';
 import 'package:forntend/view/widget/custombutton.dart';
 import 'package:forntend/view/widget/customtextfield.dart';
+import 'package:forntend/viewmodel/signup_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class SignUp extends StatelessWidget {
   SignUp({super.key});
 
-  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController locationController = TextEditingController();
@@ -14,6 +18,9 @@ class SignUp extends StatelessWidget {
   final TextEditingController userNameController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final signUpViewModel = Provider.of<SignUpViewModel>(context);
+    final userProvider = Provider.of<UserProvider>(context);
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -71,7 +78,7 @@ class SignUp extends StatelessWidget {
                       obscure: false,
 
                       label: 'Name',
-                      controller: fullNameController,
+                      controller: nameController,
                       icon: Icon(Icons.person),
                     ),
                     SizedBox(height: 0),
@@ -99,14 +106,6 @@ class SignUp extends StatelessWidget {
                     ),
 
                     Customtextfield(
-                      obscure: false,
-
-                      label: 'Username',
-                      controller: userNameController,
-                      icon: Icon(Icons.person),
-                    ),
-
-                    Customtextfield(
                       obscure: true,
 
                       label: 'Password',
@@ -115,18 +114,38 @@ class SignUp extends StatelessWidget {
                     ),
 
                     Custombutton(
+                      isLoading: signUpViewModel.isLoading,
                       title: "Sign Up",
                       onPressd: () async {
-                      
-                    
-                          //Navigator.pushReplacementNamed(context, RoutesString.dashboard);
-                        
+                        await signUpViewModel.signUp(
+                          name: nameController.text,
+                          phone: phoneNumberController.text,
+                          email: emailController.text,
+                          location: locationController.text,
+                          password: passwordController.text,
+                          userProvider: userProvider,
+                        );
+                        if (userProvider.userModel != null) {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RoutesString.dashboard,
+                          );
+                        } else {
+                          CustomAlertDialog.showCustomAlert(
+                            context,
+                            "Faild SignUp",
+                            "Something wrong!",
+                          );
+                        }
                       },
                     ),
                     SizedBox(height: 5),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, RoutesString.login);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RoutesString.login,
+                        );
                       },
                       child: Text(
                         "already have account",

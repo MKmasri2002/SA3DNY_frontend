@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:forntend/core/router/routes_string.dart';
-import 'package:forntend/provider/data_provider.dart';
+import 'package:forntend/provider/user_provider.dart';
 import 'package:forntend/view/widget/custombutton.dart';
 import 'package:forntend/view/widget/drawer.dart';
 import 'package:provider/provider.dart';
@@ -12,13 +12,9 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     // تأكد إذا المستخدم موجود وخذ الاسم، وإلا رجّع "Guest"
 
-    final dataP = Provider.of<DataProvider>(context);
-    String name = "guest";
-    if (dataP.dataModel != null) {
-      name = dataP.dataModel!.userModel != null
-          ? dataP.dataModel!.userModel.fullName
-          : "guest";
-    }
+    final userProvider = Provider.of<UserProvider>(context);
+
+    String name = userProvider.userModel?.name ?? "Geust";
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard', style: TextStyle(color: Colors.white)),
@@ -36,7 +32,8 @@ class Dashboard extends StatelessWidget {
       drawer: SafeArea(child: CustomDrawer()),
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(horizontal: 12),
-        child: Center(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

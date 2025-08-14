@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:forntend/core/router/routes_string.dart';
-import 'package:forntend/provider/data_provider.dart';
-import 'package:forntend/view/widget/customaler.dart';
+import 'package:forntend/provider/user_provider.dart';
+import 'package:forntend/view/widget/customalert.dart';
 import 'package:forntend/viewmodel/login_viewmodel.dart';
 import 'package:forntend/view/widget/custombutton.dart';
 import 'package:forntend/view/widget/customtextfield.dart';
@@ -15,8 +15,8 @@ class Login extends StatelessWidget {
   Login({super.key});
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
-    final dataP = Provider.of<DataProvider>(context, listen: false);
+    final loginViewModel = Provider.of<LoginViewModel>(context);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -75,22 +75,26 @@ class Login extends StatelessWidget {
                   ),
                   SizedBox(height: 20),
                   Custombutton(
+                    isLoading: loginViewModel.isLoading,
                     title: "login",
                     onPressd: () async {
-                      await loginVM.login(
+                      await loginViewModel.login(
                         email: emailController.text,
                         password: passwordController.text,
-                        dataProvider: dataP,
+                        userProvider: userProvider,
                       );
 
-                      if (dataP.dataModel != null) {
+                      if (userProvider.userModel != null) {
                         Navigator.pushReplacementNamed(
                           context,
                           RoutesString.dashboard,
                         );
                       } else {
-                        CustomAlertDialog.showCustomAlert(context);
-                        
+                        CustomAlertDialog.showCustomAlert(
+                          context,
+                          "Login Failed",
+                          "Wrong email or password.\nPlease try again.",
+                        );
                       }
                     },
                   ),

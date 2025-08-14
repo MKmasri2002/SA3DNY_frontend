@@ -4,13 +4,14 @@ import 'package:provider/provider.dart';
 
 class Custombutton extends StatelessWidget {
   final String title;
+  final bool? isLoading;
   final VoidCallback onPressd;
 
-  const Custombutton({super.key, required this.title, required this.onPressd});
+  const Custombutton({super.key ,required this.title, required this.onPressd, this.isLoading});
 
   @override
   Widget build(BuildContext context) {
-    final loginVM = Provider.of<LoginViewModel>(context);
+    
 
     return SizedBox(
       width: double.infinity,
@@ -19,7 +20,7 @@ class Custombutton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).primaryColor,
         ),
-        child: loginVM.isLoading
+        child: isLoading?? false
             ? CircularProgressIndicator(color: Colors.white)
             : Text(
                 title,

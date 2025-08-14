@@ -3,28 +3,27 @@ import 'package:forntend/core/service/api.dart';
 import 'package:forntend/model/usermodel.dart';
 import 'package:forntend/provider/user_provider.dart';
 
-class LoginViewModel extends ChangeNotifier {
-  bool isLoading = false;
-  Future<void> login({
-    required String email,
-    required String password,
+class UpdateViewModel extends ChangeNotifier {
+  bool isloading = false;
+  Future<void> update({
+    required String key,
+    required String value,
     required UserProvider userProvider,
   }) async {
-    isLoading = true;
+    isloading = true;
+
     notifyListeners();
     await Future.delayed(Duration(seconds: 1));
-    UserModel? userModel = await Api.login(
-      email: email,
-      password: password,
-      userProvider: userProvider,
+    UserModel? userModel = await Api.update(
+      id: userProvider.userModel?.id ?? "",
+      key: key,
+      value: value,
+      token: userProvider.token ?? "",
     );
     if (userModel != null) {
       userProvider.setData(userModel: userModel);
-    
     }
-
-    isLoading = false;
+    isloading = false;
     notifyListeners();
-   
   }
 }

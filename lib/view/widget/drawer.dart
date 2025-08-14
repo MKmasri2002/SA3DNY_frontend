@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:forntend/provider/data_provider.dart';
+import 'package:forntend/provider/user_provider.dart';
 import 'package:forntend/core/router/routes_string.dart';
 import 'package:forntend/view/widget/customcard.dart';
 
@@ -10,7 +10,7 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dataP = Provider.of<DataProvider>(context, listen: false);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
     return Drawer(
       backgroundColor: Color.fromARGB(255, 177, 174, 174),
       child: Column(
@@ -18,7 +18,13 @@ class CustomDrawer extends StatelessWidget {
           SizedBox(height: 15),
           CircleAvatar(radius: 40),
           SizedBox(height: 15),
-          CustomCard(title: 'Profile', icon: Icons.person, onTap: () {}),
+          CustomCard(
+            title: 'Profile',
+            icon: Icons.person,
+            onTap: () {
+              Navigator.pushNamed(context, RoutesString.profile);
+            },
+          ),
           CustomCard(
             title: 'Language',
             icon: Icons.language,
@@ -42,8 +48,8 @@ class CustomDrawer extends StatelessWidget {
             title: 'Log out',
             icon: Icons.logout,
             onTap: () {
-              dataP.logOut();
-              
+              userProvider.logOut();
+
               Navigator.popUntil(
                 context,
                 ModalRoute.withName(RoutesString.welcome),
